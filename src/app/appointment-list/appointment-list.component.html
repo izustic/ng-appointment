@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="feedWrap">
+    <div class="inputWrap">
+      <input [(ngModel)]="newAppointmentTitle" type="text" placeholder="Appointment description" class="input-field title" />
+      <input [(ngModel)]="newAppointmentDate" type="date" class="input-field" />
+      <input [(ngModel)]="newAppointmentTag" type="text" placeholder="Separate tags with commas" class="input-field tags" />
+    </div>
+    <button (click)="addAppointment()" class="addBtn">Add</button>
+  </div>
+  
+  <ul *ngFor="let item of appointments">
+    <div class="itemWrap">
+      <li>
+        <p>{{ item.title }}</p>
+        <p>{{ item.date | date: 'dd/MM/yyyy'}}</p>
+      </li>
+      <div class="tagsWrap">
+        <div *ngFor="let tag of item.tags">
+          <button>{{tag}}</button>
+        </div>
+      </div>
+    </div>
+    <button (click)="deleteAppointment(item.id)" class="deleteBtn">Delete</button>
+  </ul>
+</div>
